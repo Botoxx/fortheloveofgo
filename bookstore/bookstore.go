@@ -9,9 +9,10 @@ type Book struct {
 }
 
 func Buy(b Book) (Book, error) {
-	if b.Copies > 0 {
-		b.Copies--
-		return b, nil
+	if b.Copies == 0 {
+		return Book{}, errors.New("out of stock")
 	}
-	return Book{}, errors.New("out of stock")
+	b.Copies--
+	return b, nil
+
 }
