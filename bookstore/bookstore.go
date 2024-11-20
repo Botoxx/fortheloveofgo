@@ -24,11 +24,7 @@ func GetAllBooks(catalog []Book) []Book {
 	return catalog
 }
 
-func GetBook(catalog []Book, id int) (Book, error) {
-	for _, b := range catalog {
-		if b.Id == id {
-			return b, nil
-		}
-	}
-	return Book{}, errors.New("id not found")
+func GetBook(catalog map[int]Book, id int) Book {
+
+	return catalog[id]
 }
