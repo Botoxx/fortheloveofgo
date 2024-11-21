@@ -2,13 +2,14 @@ package bookstore
 
 import (
 	"errors"
+	"fmt"
 )
 
 type Book struct {
 	Title  string
 	Author string
 	Copies int
-	Id     int
+	ID     int
 }
 
 func Buy(b Book) (Book, error) {
@@ -20,11 +21,18 @@ func Buy(b Book) (Book, error) {
 
 }
 
-func GetAllBooks(catalog []Book) []Book {
-	return catalog
+func GetAllBooks(catalog map[int]Book) []Book {
+	result := []Book{}
+	for _, b := range catalog {
+		result = append(result, b)
+	}
+	return result
 }
 
-func GetBook(catalog map[int]Book, id int) Book {
-
-	return catalog[id]
+func GetBook(catalog map[int]Book, ID int) (Book, error) {
+	b, ok := catalog[ID]
+	if !ok {
+		return b, fmt.Errorf("%d is a wrong ID", ID)
+	}
+	return b, nil
 }
