@@ -46,3 +46,38 @@ func TestStringsBuilder(t *testing.T) {
 		t.Errorf("%q: want lenght of %d, got %d", sb.String(), wLen, gLen)
 	}
 }
+
+func TestMyBuilder(t *testing.T) {
+	t.Parallel()
+
+	var mb mytypes.MyBuilder
+
+	mb.Contents.WriteString("Hanyas ")
+	mb.Contents.WriteString("vagy te diszno")
+
+	w := "Hanyas vagy te diszno"
+	g := mb.Contents.String()
+	if w != g {
+		t.Errorf("want %q, got %q", w, g)
+	}
+
+	wLen := 21
+	gLen := mb.Contents.Len()
+	if wLen != gLen {
+		t.Errorf("%q: want lenght of %d, got %d",
+			mb.Contents.String(), wLen, gLen)
+	}
+}
+
+func TestStringUppercaser(t *testing.T) {
+	t.Parallel()
+
+	var su mytypes.StringUppercaser
+
+	su.Contents.WriteString("hello gophers")
+	w := "HELLO GOPHERS"
+	g := su.ToUpper()
+	if w != g {
+		t.Errorf("want %q, got %q", w, g)
+	}
+}
