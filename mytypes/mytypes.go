@@ -25,6 +25,6 @@ func (su StringUppercaser) ToUpper() string {
 	return strings.ToUpper(su.Contents.String())
 }
 
-func Double(input *int) {
+func (input *MyInt) Double() {
 	*input *= 2
 }

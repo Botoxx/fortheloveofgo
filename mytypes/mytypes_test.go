@@ -85,9 +85,10 @@ func TestStringUppercaser(t *testing.T) {
 func TestDouble(t *testing.T) {
 	t.Parallel()
 
-	var x int = 4
-	w := 8
-	mytypes.Double(&x)
+	x := mytypes.MyInt(4)
+	w := mytypes.MyInt(8)
+	p := &x
+	p.Double()
 	if w != x {
 		t.Errorf("want %q, got %q", w, x)
 	}
