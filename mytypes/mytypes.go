@@ -24,3 +24,7 @@ func (s MyString) Len() int {
 func (su StringUppercaser) ToUpper() string {
 	return strings.ToUpper(su.Contents.String())
 }
+
+func Double(input *int) {
+	*input *= 2
+}
